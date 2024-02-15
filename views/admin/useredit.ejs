@@ -1,0 +1,63 @@
+<%- include('../header.ejs') %>
+<h1 class="text-center">UserData Update</h1>
+<div class="container">
+    <form action="/admin/courseupdate/<%= courseedit.id %>" method="post">
+        <div class="mb-3">
+          <label for="">Name</label>
+          <input type="text" name="name" value="<%=courseedit.name %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">Email</label>
+          <input type="email" name="email" value="<%=courseedit.email %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">Mobile</label>
+          <input type="number" name="mobile" value="<%=courseedit.number %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">DOB</label>
+          <input type="date" name="dob" value="<%=courseedit.dob %>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">Gender</label>
+          <input  <%= courseedit.gender=='Male'?'checked':'' %> type="radio" name="gender"  value="Male">Male
+          <input  <%= courseedit.gender=='Female'?'checked':'' %> type="radio" name="gender" value="Female">Female
+        </div>
+        <div class="mb-3">
+          <label for="">Address</label>
+           <textarea name="address" class="form-control">
+            <%=courseedit.address %>
+           </textarea>
+        </div>
+        <div class="mb-3">
+          <label for="">College</label>
+          <select name="college" id="" class="form-control">
+            <option value="#">Choose..</option>
+            <option <%= courseedit.college=='bhagalpur university'?'selected':'' %> value="bhagalpur university">bhagalpur university</option>
+            <option <%= courseedit.college=='IIT bombay'?'selected':'' %> value="IIT bombay">IIT bombay</option>
+            <option <%= courseedit.college=='IIT kota'?'selected':'' %> value="IIT kota">IIT kota</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="">Course</label>
+          <select name="course" id="" class="form-control">
+            <option value="#">Choose..</option>
+            <option <%= courseedit.course=='b.tech'?'selected':'' %> value="b.tech">b.tech</option>
+           
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="">Branch</label>
+          <select name="branch" class="form-control">
+            <option value="#">Choose..</option>
+            <option <%= courseedit.branch=='IT'?'selected':'' %> value="IT">IT</option>
+            <option <%= courseedit.branch=='CS'?'selected':'' %> value="CS">CS</option>
+            <option <%= courseedit.branch=='Electronic'?'selected':'' %> value="Electronic">Electronic</option>
+          </select>
+        </div>
+        <div class=" text-center mb-3">
+          <button type="submit" class="btn btn-info">Update</button>
+        </div>
+       </form>
+</div>
+<%- include('../footer.ejs') %>

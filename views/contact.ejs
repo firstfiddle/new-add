@@ -1,0 +1,38 @@
+<%- include('./header.ejs') %>
+    <!--- img about ----->
+    <section class="cmspage mtb-40">
+        <div class="container">
+          <div class="page-desc">
+            <div class="row justify-content-center">
+              <div class="col-md-8">
+                <h1 class="text-center my-5">Contact Info</h1>
+                <div class="card p-3 mb-2 text-bg-dark">
+                    <form action="/inform" method="post">
+                        <div class="input-group mb-3">
+                            <label for="" class="input-group-text text-bg-danger">Name</label>
+                            <input name="name" type="text" placeholder="Enter Your Name" class="form-control" required>
+                           </div>
+                           <div class="input-group mb-3">
+                            <label for="" class="input-group-text text-bg-danger">Email</label>
+                            <input name="email" type="email" placeholder="Enter Your Name" class="form-control" required>
+                           </div>
+                           <div class="input-group mb-3">
+                            <label for="" class="input-group-text text-bg-danger">Phone</label>
+                            <input name="n" type="number" placeholder="Enter Your Phone" class="form-control" required>
+                           </div>
+                           <div class="mb-3">
+                            <label for="" class="text-bg-danger mb-2 p-2 rounded-3">Message</label>
+                            <textarea name="" id="" placeholder="Type Message" cols="30" rows="10" class="form-control" required></textarea>
+                           </div>
+                      <div class="form-group mb-2">
+                        <button class="btn btn-success">Send Message</button>
+                      </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+    <!--- img about end---->
+<%- include('./footer.ejs') %>

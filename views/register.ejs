@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addmision portal</title>
+    <!-----------------------------css link start--------------------------------------->
+    <link rel="stylesheet" href="css/add portal.css">
+    <!-----------------------------css link end --------------------------------------->
+    <!-----------------------------bootsrap link start --------------------------------------->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-----------------------------bootsrap link end --------------------------------------->
+<!------icon css link--->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<!----icon css end------>
+</head>
+<body>
+    <!---nav bar st---->
+    <nav class="navbar navbar-dark bg-danger navbar-expand-md">
+        <div class="container-fluid">
+          <a href="">
+            <img width="30%" class="pro"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGLfamcgFDSqpVzEZhIBB7unDOszz66Gw1AiqD04T40Us0Z13qOnRjqXygzeC5IXfdUhg&usqp=CAU"
+              alt="">
+          </a>
+          <button class="navbar-toggler" data-bs-target="#a" data-bs-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse text-center" id="a">
+            <ul class="navbar-nav ms-auto">
+              <li><a href="/" class="nav-link">Home</a></li>
+              <li><a href="/" class="nav-link">About</a></li>
+              <li><a href="/" class="nav-link">Contact</a></li>
+            
+              </a>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!---navbar end---->
+    <div class="container">
+        <div class="card shadow-lg my-5">
+            <div class="row mb-3">
+                <div class="col-md-5 pt-2">
+                    <div class="carousel slide carouse-fade h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="2000">
+                                <img class="w-100" height="510px"
+                                src="img/rs1.jpg" alt="">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="2000"> 
+                                <img class="w-100" src="img/rs2.jpg" class="w-100"
+                                    height="510px">
+                            </div>
+    
+                        </div>
+                    </div><!-- carousel end-->
+    
+                </div>
+                <div class="col-md-5 pt-2">
+                  <div class="text-center">
+                    <img width="120px " height="120px" src="https://ankit-admission-portal.onrender.com/image/logo.png" alt="">
+                  </div>
+                  <h2 class="text-center mb-3">Register Here</h2>
+                  <% if(message.length > 0){%>
+                    <div class="alert alert-danger">
+                        <%= message %>  
+                    </div>
+                <%} %>
+                <!--register form -->
+                <form action="/insertreg" method="post" enctype="multipart/form-data">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">User Name</span>
+                        <input name="n" type="text" class="form-control">
+                     </div>
+                     <div class="input-group mb-3">
+                    <span class="input-group-text">@</span>
+                    <input name="e" type="email" placeholder="Ravi@123" class="form-control">
+                     </div>
+                     <div class="input-group mb-3">
+                       <span class="input-group-text">password</span>
+                       <input name="p" type="password" class="form-control" >
+                        </div>
+                        <div class="input-group mb-3">
+                           <span class="input-group-text">conform password</span>
+                           <input type="password" name="cp" class="form-control">
+                       </div>
+                       <div class="input-group mb-3">
+                           <input type="file" name="image" class="form-control" required>
+                           <label class="input-group-text">Upload</lable>
+                       </div>
+                       <div class=" text-center ">
+                          <button type="submit" class=" btn btn-lg btn-info px-5 text-light">Register</button>
+                       </div>
+                </form>
+                </div>
+            </div><!-- row end-->
+        </div>
+        
+
+    </div><!-- container end-->
+<%- include('./footer.ejs') %>
+   

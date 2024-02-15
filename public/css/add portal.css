@@ -1,0 +1,46 @@
+/* loging css start */
+ .carousel{
+    width: 100%;
+    height: 440px;
+    overflow: hidden;
+ }
+
+
+/* loging css end */
+
+/* home css start */
+.pro{
+    height: 80px;
+    width: 80px;
+    border-radius:40px;
+}
+.navbar{
+    background-color: #00000082!important;
+}
+ /* home css end */
+ /* admin css */
+ .ad{
+   text-align: center; 
+   margin-top: 3em;
+ }
+.tb{
+   width: 100px;
+
+ }
+ /* admin css end */
+ /* footer */
+ ul li span:hover{
+    color: black;
+ }
+ .social-icon{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    border-top: 2px solid black;
+ }
+ .social-item{
+    margin: 10px 20px;
+    font-size: 25px;
+ }
+ /* footer end */
+ 

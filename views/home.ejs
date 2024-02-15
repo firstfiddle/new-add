@@ -1,0 +1,318 @@
+ <%- include('./header.ejs') %>
+  <!-----slider start----->
+  <div class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img class="w-100" style="height: 12cm;"
+        src="img/sl1.jpg">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img class="w-100" style="height: 12cm;"
+        src="img/sl2.jpg">
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img class="w-100" style="height: 12cm;"
+          src="img/sl3.jpg"
+          alt="">
+      </div>
+    </div>
+  </div>
+  <!-----slider end------->
+  <!----3rd div st--->
+  <div class="container">
+    <div class="row ">
+      <h1 class="text-center py-5">Institute of Engineering & Technology</h1>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow">
+          <h6 style="text-align: justify;" class="mx-4 pt-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Laborum, dolorem hic! Aut quia necessitatibus excepturi ipsum deleniti accusamus, possimus facere doloribus
+            repellat dolores et tempora vero officiis dolorem perferendis voluptatum?</h6>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow">
+          <h6 style="text-align: justify;" class="mx-4 pt-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Laborum, dolorem hic! Aut quia necessitatibus excepturi ipsum deleniti accusamus, possimus facere doloribus
+            repellat dolores et tempora vero officiis dolorem perferendis voluptatum?</h6>
+        </div>
+      </div>
+      <div class="col-md-4 mb-3">
+        <div class="card shadow">
+          <h6 style="text-align: justify;" class="mx-4 pt-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Laborum, dolorem hic! Aut quia necessitatibus excepturi ipsum deleniti accusamus, possimus facere doloribus
+            repellat dolores et tempora vero officiis dolorem perferendis voluptatum?</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--- 3rd div end-->
+  <!----course critiria st---->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-4  mb-3">
+        <div class="card">
+           <img class="w-100" height="200px" src="img/btech1.jfif" alt="">
+          <div class="card-body">
+            <h2 class="text-center">B.TECH</h2>
+            <h6>B Tech is a professional undergraduate engineering degree</h6>
+            <div class="text-center">
+              <% if(btech){ %>
+                <a href="/coursedisplay" class="btn btn-info">Course Display</a>
+            <% }else{ %>
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#btech">
+                 Register
+                 </button> 
+             <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4  mb-3">
+        <div class="card">
+          <img class="w-100" height="200px"
+            src="img/bca2.jfif"
+            alt="">
+          <div class="card-body">
+            <h2 class="text-center">BCA</h2>
+            <h6>BCA is a three-year Bachelor's Degree in Computer Application</h6>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bca">
+                Register
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4  mb-3">
+        <div class="card">
+           <img class="w-100" height="200px" src="img/mcca.jfif" alt="">
+          <div class="card-body">
+            <h2 class="text-center">MCA</h2>
+            <h6>BCA is a three-year Bachelor's Degree in Computer Application</h6>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mca">
+                Register
+                </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!----course critiria end--->
+  <!-- btech model -->
+ <!--btech Modal -->
+ <div class="modal fade" id="btech" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">B.Tech Addmision Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form action="/btechforminsert" method="post">
+        <div class="mb-3">
+          <label for="">Name</label>
+          <input type="text" name="name" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">Email</label>
+          <input type="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">Mobile</label>
+          <input type="number" name="mobile" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">DOB</label>
+          <input type="date" name="dob" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label for="">Gender</label>
+          <input type="radio" name="gender" value="Male">Male
+          <input type="radio" name="gender" value="Female">Female
+        </div>
+        <div class="mb-3">
+          <label for="">Address</label>
+           <textarea name="address" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="">College</label>
+          <select name="college" id="" class="form-control">
+            <option value="#">Choose..</option>
+            <option value="bhagalpur university">bhagalpur university</option>
+            <option value="IIT bombay">IIT bombay</option>
+            <option value="IIT kota">IIT kota</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="">Course</label>
+          <select name="course" id="" class="form-control">
+            <option value="#">Choose..</option>
+            <option value="b.tech">b.tech</option>
+           
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="">Branch</label>
+          <select name="branch" class="form-control">
+            <option value="#">Choose..</option>
+            <option value="IT">IT</option>
+            <option value="CS">CS</option>
+            <option value="Electronic">Electronic</option>
+          </select>
+        </div>
+        <div class=" text-center">
+          <button type="submit" class="btn btn-primary ">Register</button>
+        </div>
+       </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- btech end -->
+<!--bca Modal -->
+<div class="modal fade" id="bca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">BCA Addmison Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="mb-3">
+            <label for="">Name</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">Email</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">Mobile</label>
+            <input type="number" name="mobile" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">DOB</label>
+            <input type="date" name="dob" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">Gender</label>
+            <input type="radio" name="gender" value="Male">Male
+            <input type="radio" name="gender" value="Female">Female
+          </div>
+          <div class="mb-3">
+            <label for="">Address</label>
+             <textarea name="address" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">College</label>
+            <select name="college" id="" class="form-control">
+              <option value="#">Choose..</option>
+              <option value="bhagalpur university">bhagalpur university</option>
+              <option value="IIT bombay">IIT bombay</option>
+              <option value="IIT kota">IIT kota</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="">Course</label>
+            <select name="course" id="" class="form-control">
+              <option value="#">Choose..</option>
+              <option value="bca">bca</option>
+             
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="">Branch</label>
+            <select name="branch" class="form-control">
+              <option value="#">Choose..</option>
+              <option value="IT">IT</option>
+              <option value="CS">CS</option>
+              <option value="Electronic">Electronic</option>
+            </select>
+          </div>
+          <div class=" text-center">
+            <button type="submit" class="btn btn-primary ">Register</button>
+          </div>
+         </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- bca end -->
+<!--mca Modal -->
+<div class="modal fade" id="mca" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">MCA Addmison Form</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="mb-3">
+            <label for="">Name</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">Email</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">Mobile</label>
+            <input type="number" name="mobile" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">DOB</label>
+            <input type="date" name="dob" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="">Gender</label>
+            <input type="radio" name="gender" value="Male">Male
+            <input type="radio" name="gender" value="Female">Female
+          </div>
+          <div class="mb-3">
+            <label for="">Address</label>
+             <textarea name="address" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">College</label>
+            <select name="college" id="" class="form-control">
+              <option value="#">Choose..</option>
+              <option value="bhagalpur university">bhagalpur university</option>
+              <option value="IIT bombay">IIT bombay</option>
+              <option value="IIT kota">IIT kota</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="">Course</label>
+            <select name="course" id="" class="form-control">
+              <option value="#">Choose..</option>
+              <option value="mca">mca</option>
+             
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="">Branch</label>
+            <select name="branch" class="form-control">
+              <option value="#">Choose..</option>
+              <option value="IT">IT</option>
+              <option value="CS">CS</option>
+              <option value="Electronic">Electronic</option>
+            </select>
+          </div>
+          <div class=" text-center">
+            <button type="submit" class="btn btn-primary ">Register</button>
+          </div>
+         </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- mca end -->
+
+  <%- include('./footer.ejs') %>

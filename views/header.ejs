@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Addmision portal</title>
+  <!-----------------------------css link start-------------------------->
+  <link rel="stylesheet" href="/css/add portal.css">
+  <!-----------------------------css link end --------------------------->
+  <!-----------------bootsrap link start ---------------->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-----------bootsrap link end ---------------->
+  <!------icon css link--->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!----icon css end------>
+</head>
+
+<body>
+  <!-----nav start-->
+  <nav class="navbar navbar-dark navbar-expand-md fixed-top">
+    <div class="container-fluid">
+      <a href="">
+        <img width="30%" class="pro"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGLfamcgFDSqpVzEZhIBB7unDOszz66Gw1AiqD04T40Us0Z13qOnRjqXygzeC5IXfdUhg&usqp=CAU"
+          alt="">
+      </a>
+      <button class="navbar-toggler" data-bs-target="#a" data-bs-toggle="collapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse text-center" id="a">
+        <ul class="navbar-nav ms-auto">
+          <li><a href="/home" class="nav-link">Home</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/contact" class="nav-link">Contact</a></li>
+          <li><a href="/logout" class="nav-link">Logout</a></li>
+          <li><a href="" class="nav-link"><%= n %></a></li>
+          <li><a href="/profile" class="nav-link">Profile</a></li>
+          <li><img src="<%=image.url %>" class="rounded-circle" width="50px" height="50px" alt=""></li>
+ 
+          </a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-----nav end---->

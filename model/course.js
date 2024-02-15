@@ -1,0 +1,55 @@
+const { string } = require('i/lib/util')
+const mongoose=require('mongoose')
+//feild
+const Courseschema=new mongoose.Schema({
+    name:{
+        type:String,
+        Required:true
+    },
+    email:{
+        type:String,
+        Required:true
+    },
+    number:{
+        type:String,
+        Required:true
+    },
+    dob:{
+        type:String,
+        Required:true
+    },
+    gender:{
+        type:String,
+        Required:true
+    },
+    address:{
+        type:String,
+        Required:true
+    },
+    college:{
+        type:String,
+        Required:true
+    },
+    course:{
+        type:String,
+        Required:true
+    },
+    branch:{
+        type:String,
+        Required:true
+    },
+    status:{
+        type:String,
+        default:'pending'
+    },
+    comment:{
+        type:String
+    },
+    user_id:{
+        type:String,
+        Required:true
+    }
+},{timestamps:true})
+//model
+const CourseModel=mongoose.model('course',Courseschema)
+module.exports=CourseModel
