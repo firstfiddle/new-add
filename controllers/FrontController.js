@@ -285,7 +285,7 @@ class FrontController {
              to: email,  // list of receivers
              subject: "For Vefification Mail", // Subject line
              text: "Hello world?", // plain text body
-             html: '<b>'+name+' </b>, please click here to <a href="http://localhost:1000/verify?id='+user_id+'">verify</a> your mail' // html body
+             html: '<b>'+name+' </b>, please click here to <a href="https://addmissionportal-r41h.onrender.com/verify?id='+user_id+'">verify</a> your mail' // html body
            });
         } catch (error) {
          console.log(error)
@@ -316,7 +316,7 @@ class FrontController {
              to: email,  // list of receivers
              subject: "For Reset Your Password", // Subject line
              text: "Hello world?", // plain text body
-             html: '<b>'+name+'</b> ,please click here to <a href="http://localhost:1000/forget-password?token='+token+'">Reset</a> your password' // html body
+             html: '<b>'+name+'</b> ,please click here to <a href="https://addmissionportal-r41h.onrender.com/forget-password?token='+token+'">Reset</a> your password' // html body
            });
         } catch (error) {
          console.log(error)
