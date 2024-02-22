@@ -1,6 +1,6 @@
  <%- include('./header.ejs') %>
   <!-----slider start----->
-  <div class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active" data-bs-interval="2000">
         <img class="w-100" style="height: 12cm;"
@@ -8,7 +8,7 @@
       </div>
       <div class="carousel-item" data-bs-interval="2000">
         <img class="w-100" style="height: 12cm;"
-        src="img/sl2.jfif">
+        src="img/sl2.jpg">
       </div>
       <div class="carousel-item" data-bs-interval="2000">
         <img class="w-100" style="height: 12cm;"
@@ -16,6 +16,14 @@
           alt="">
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" ></span>
+      
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      
+    </button>
   </div>
   <!-----slider end------->
   <!----3rd div st--->
@@ -51,7 +59,7 @@
     <div class="row">
       <div class="col-md-4  mb-3">
         <div class="card">
-           <img class="w-100" height="200px" src="img/btech1.jfif" alt="">
+           <img class="w-100" height="200px" src="img/btech.jpg" alt="">
           <div class="card-body">
             <h2 class="text-center">B.TECH</h2>
             <h6>B Tech is a professional undergraduate engineering degree</h6>
@@ -70,7 +78,7 @@
       <div class="col-md-4  mb-3">
         <div class="card">
           <img class="w-100" height="200px"
-            src="img/bca2.jfif"
+            src="img/bca.jpg"
             alt="">
           <div class="card-body">
             <h2 class="text-center">BCA</h2>
@@ -85,7 +93,7 @@
       </div>
       <div class="col-md-4  mb-3">
         <div class="card">
-           <img class="w-100" height="200px" src="img/mcca.jfif" alt="">
+           <img class="w-100" height="200px" src="img/mca.jpg" alt="">
           <div class="card-body">
             <h2 class="text-center">MCA</h2>
             <h6>BCA is a three-year Bachelor's Degree in Computer Application</h6>
