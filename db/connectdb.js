@@ -1,6 +1,5 @@
 const mongoose=require('mongoose')
-const livedb='mongodb+srv://veerprajapati173:Ravi2003@cluster0.8lced4w.mongodb.net/admission-prcopy?retryWrites=true&w=majority'
-const localdb='mongodb://127.0.0.1:27017/admission-prcopy'
+const livedb='mongodb+srv://veerprajapati173:Ravi2004@cluster0.ngfq6if.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
 const connectdb=()=>{
     return mongoose.connect(livedb)
      .then(()=>{
