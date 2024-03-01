@@ -105,7 +105,7 @@ class FrontController {
                             }
                         })
                        const userdata= await result.save() 
-                        this.sendverifymail(n,e,userdata._id);
+                        this.sendverifymail(userdata.name,userdata.email,userdata._id);
                         req.flash('error', 'You are successfully registerd,plese verify your email')
                         res.redirect('/')
                     } else {
