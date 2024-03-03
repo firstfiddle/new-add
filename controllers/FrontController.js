@@ -105,8 +105,7 @@ class FrontController {
                             }
                         })
                        const userdata= await result.save() 
-                        this.sendverifyMail(req.body.n,req.body.e,userdata._id);
-                        req.flash('error', 'You are successfully registerd,plese verify your email')
+                        req.flash('error', 'You are successfully registerd')
                         res.redirect('/')
                     } else {
                         req.flash('error', 'Password & Confirm Password does not match')
@@ -269,37 +268,7 @@ class FrontController {
              console.log(error)
          }
     }
-    // sendverification mail
-      static sendverifyMail= async(name,email,user_id)=>{
-        try {
-         let transporter =await nodemailer.createTransport({
-             host: "smtp.gmail.com",
-             port: 587,
-             auth: { 
-               user: "onlinemath85@gmail.com",
-               pass: "wpxsfkdixdinevsf",
-             },
-           });
-           let info = await transporter.sendMail({
-             from: "text@gmail.com", // sender address
-             to: email,  // list of receivers
-             subject: "For Verification Mail", // Subject line
-             text: "Hello world?", // plain text body
-             html: '<b>'+name+'</b> ,please click here to <a href="https://ravibtech.onrender.com/verify?id='+user_id+'">verify</a> your mail' // html body
-           });
-        } catch (error) {
-         console.log(error)
-        }
-     }
-     //vefifymail link
-     static verifymail=async(req,res)=>{
-        try {
-            const updateinfo= await Usermodel.updateOne({_id:req.query.id},{$set:{verify:1}})
-            res.render('emailverify');
-        } catch (error) {
-            console.log(error)
-        }
-     }
+     
      //for reset pass send mail
      static resetpasswordmail= async(name,email,token)=>{
         try {

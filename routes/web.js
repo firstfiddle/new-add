@@ -16,8 +16,7 @@ const route=express.Router()
  route.post('/verifylogin',FrontController.verifylogin)
  route.get('/forget',FrontController.forgetload)
  route.post('/forget',FrontController.forgetverify)
- // mail verification
- route.get('/verify',FrontController.verifymail);
+ 
  
  //rest password click path
  route.get('/forget-password',FrontController.forgetpassword)
