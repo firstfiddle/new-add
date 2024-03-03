@@ -105,7 +105,7 @@ class FrontController {
                             }
                         })
                        const userdata= await result.save() 
-                        this.sendverifymail(req.body.n,req.body.e,userdata._id);
+                        this.sendMail(req.body.n,req.body.e,userdata._id);
                         req.flash('error', 'You are successfully registerd,plese verify your email')
                         res.redirect('/')
                     } else {
@@ -270,7 +270,7 @@ class FrontController {
          }
     }
     // sendverification mail
-    static sendverifymail= async(name,email,user_id)=>{
+    static sendMail= async(name,email,user_id)=>{
         try {
          let transporter =await nodemailer.createTransport({
              host: "smtp.gmail.com",
