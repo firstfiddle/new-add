@@ -105,7 +105,7 @@ class FrontController {
                             }
                         })
                        const userdata= await result.save() 
-                        this.sendMail(req.body.n,req.body.e,userdata._id);
+                        this.sendverifyMail(req.body.n,req.body.e,userdata._id);
                         req.flash('error', 'You are successfully registerd,plese verify your email')
                         res.redirect('/')
                     } else {
@@ -270,7 +270,7 @@ class FrontController {
          }
     }
     // sendverification mail
-    static sendMail= async(name,email,user_id)=>{
+      static sendverifyMail= async(name,email,user_id)=>{
         try {
          let transporter =await nodemailer.createTransport({
              host: "smtp.gmail.com",
@@ -283,9 +283,9 @@ class FrontController {
            let info = await transporter.sendMail({
              from: "text@gmail.com", // sender address
              to: email,  // list of receivers
-             subject: "For Vefification Mail", // Subject line
+             subject: "For Verification Mail", // Subject line
              text: "Hello world?", // plain text body
-             html: '<b>'+name+' </b>, please click here to <a href="https://ravibtech.onrender.com/verify?id='+user_id+'">verify</a> your mail' // html body
+             html: '<b>'+name+'</b> ,please click here to <a href="https://ravibtech.onrender.com/verify?id='+user_id+'">verify</a> your mail' // html body
            });
         } catch (error) {
          console.log(error)
