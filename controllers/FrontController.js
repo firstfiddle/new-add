@@ -138,7 +138,7 @@ class FrontController {
                             res.cookie('token', token)
                             res.redirect('/admin/home')
                         }
-                        if (user.role == 'user' && user.verify =='1') {
+                        if (user.role == 'user') {
                             const token = jwt.sign({ ID: user._id }, 'Raksdjf#7767dnnm');
                             //console.log(token)
                             res.cookie('token', token)
