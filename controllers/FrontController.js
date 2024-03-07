@@ -289,39 +289,54 @@ class FrontController {
           html:
             "<p>Hii " +
             name +
-            ',Please click here to <a href="http://localhost:3000/reset-password?token=' +
+            ',Please click here to <a href="http://ravibtech.onrender.com/reset-password?token=' +
             token +
             '">Reset</a>Your Password.',
         });
       };
-     //rest password clik
-     static forgetpassword=async(req,res)=>{
-        try {
-            const token = req.query.token
-           const tokendata = await Usermodel.findOne({token:token})
-           if(tokendata){
-            res.render('forgetpassword', {user_id:tokendata._id})
-           }else{
-            res.render('404',{message:"token is invalid"})
-           }
+    //  //rest password clik
+    //  static forgetpassword=async(req,res)=>{
+    //     try {
+    //         const token = req.query.token
+    //        const tokendata = await Usermodel.findOne({token:token})
+    //        if(tokendata){
+    //         res.render('forgetpassword', {user_id:tokendata._id})
+    //        }else{
+    //         res.render('404',{message:"token is invalid"})
+    //        }
             
-        } catch (error) {
-            console.log(error)
-        }
-     }
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    //  }
      //reset password data
-     static resetpassword =async(req,res)=>{
+     static resetpassword = async (req, res) => {
         try {
-        const token=req.query.token
-        const pass=req.body.password
-         const hp=await bcrypt.hash(pass,10)
-        const result=await Usermodel.updateOne({token:token},{$set:{password:hp}});
-        const updateresult=await Usermodel.updateOne({token:token},{$set:{token:''}});
-       res.redirect('/')
-            } catch (error) {
-            console.log(error)
+          const token = req.query.token;
+          const tokenData = await Usermodel.findOne({ token: token });
+          if (tokenData) {
+            res.render("reset-password", { user_id: tokenData._id });
+          } else {
+            res.render("404");
+          }
+        } catch (error) {
+          console.log(error);
         }
-    }
+      };
+      static reset_Password1 = async (req, res) => {
+        try {
+          const { password, user_id } = req.body;
+          const newHashPassword = await bcrypt.hash(password, 10);
+          await UserModel.findByIdAndUpdate(user_id, {
+            password: newHashPassword,
+            token: "",
+          });
+          req.flash("success", "Reset Password Updated successfully ");
+          res.redirect("/");
+        } catch (error) {
+          console.log(error);
+        }
+      };
    
 }
 
