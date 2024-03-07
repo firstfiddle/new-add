@@ -327,7 +327,7 @@ class FrontController {
         try {
           const { password, user_id } = req.body;
           const newHashPassword = await bcrypt.hash(password, 10);
-          await UserModel.findByIdAndUpdate(user_id, {
+          await Usermodel.findByIdAndUpdate(user_id, {
             password: newHashPassword,
             token: "",
           });
