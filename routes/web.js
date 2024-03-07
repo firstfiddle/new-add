@@ -14,13 +14,11 @@ const route=express.Router()
  route.get('/register',FrontController.register)
  route.post('/insertreg',FrontController.insertreg)
  route.post('/verifylogin',FrontController.verifylogin)
- route.get('/forget',FrontController.forgetload)
- route.post('/forget',FrontController.forgetverify)
+ route.post('/forgot_Password',FrontController.forgetPasswordVerify)
  
  
  //rest password click path
- route.get('/forget-password',FrontController.forgetpassword)
- route.post('/forget-password',FrontController.resetpassword)
+ 
  route.get('/logout',FrontController.logout)
  route.post('/profileupdate',chekUserAuth,FrontController.profileupdate)
  route.post('/changepassword',chekUserAuth,FrontController.changepassword)

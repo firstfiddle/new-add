@@ -34,6 +34,10 @@ const mongoose=require('mongoose')
     token:{
         type:String,
         default:''
+    },
+    is_verified:{
+        type:Number,
+        default:0
     }
  },{timestamps:true})
 

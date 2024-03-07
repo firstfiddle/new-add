@@ -46,7 +46,8 @@ class FrontController {
     }
     static login = async (req, res) => {
         try {
-            res.render('login', { message: req.flash('error') })
+            res.render('login', { message: req.flash('error'),
+        msg:req.flash('success')})
         } catch (error) {
             console.log(error)
         }
@@ -243,54 +244,56 @@ class FrontController {
             console.log('error')
         }
     }
-    static forgetverify=async(req,res)=>{
+    static forgetPasswordVerify = async (req, res) => {
         try {
-            const { email}= req.body;
-           // console.log(email);
-            const userdata = await Usermodel.findOne({email:email});
-            if(userdata){
-            if(userdata.verify == '0'){
-                req.flash('error', 'Please verify your Email Address')
-                res.redirect('/forget')
-            }else{
-                const random=randomstring.generate();
-               const  updatedata = await Usermodel.updateOne({email:email},{$set:{token:random}});
-             this.resetpasswordmail(email,random)
-             req.flash('error', 'reset password link send to Email Address')
-             res.redirect('/forget')
-            }
-            }else{
-                req.flash('error', 'Please insert the Registered Email Address')
-                 res.redirect('/forget')
-            }
-           
-         } catch (error) {
-             console.log(error)
-         }
-    }
+          const { email } = req.body;
+          const userData = await UserModel.findOne({ email: email });
+          //console.log(userData)
+          if (userData) {
+            const randomString = randomstring.generate();
+            await UserModel.updateOne(
+              { email: email },
+              { $set: { token: randomString } }
+            );
+            this.sendEmail(userData.name, userData.email, randomString);
+            req.flash("success", "Plz Check Your mail to reset Your Password!");
+            res.redirect("/");
+          } else {
+            req.flash("error", "You are not a registered Email");
+            res.redirect("/");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
      
      //for reset pass send mail
-     static resetpasswordmail= async(email,random)=>{
-        try {
-         let transporter =await nodemailer.createTransport({
-             host: "smtp.gmail.com",
-             port: 587,
-             auth: { 
-               user: "onlinemath85@gmail.com",
-               pass: "wpxsfkdixdinevsf",
-             },
-           });
-           let info = await transporter.sendMail({
-             from: "text@gmail.com", // sender address
-             to: email,  // list of receivers
-             subject: "For Reset Your Password", // Subject line
-             text: "Hello world?", // plain text body
-             html: '</b> ,please click here to <a href="https://ravibtech.onrender.com/forget-password?token='+random+'">Reset</a> your password' // html body
-           });
-        } catch (error) {
-         console.log(error)
-        }
-     }
+     static sendEmail = async (name, email, token) => {
+        // console.log(name,email,status,comment)
+        // connenct with the smtp server
+    
+        let transporter = await nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+    
+          auth: { 
+            user: "onlinemath85@gmail.com",
+            pass: "wpxsfkdixdinevsf",
+          },
+        });
+        let info = await transporter.sendMail({
+          from: "test@gmail.com", // sender address
+          to: email, // list of receivers
+          subject: "Reset Password", // Subject line
+          text: "heelo", // plain text body
+          html:
+            "<p>Hii " +
+            name +
+            ',Please click here to <a href="http://localhost:3000/reset-password?token=' +
+            token +
+            '">Reset</a>Your Password.',
+        });
+      };
      //rest password clik
      static forgetpassword=async(req,res)=>{
         try {
