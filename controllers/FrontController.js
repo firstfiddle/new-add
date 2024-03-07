@@ -247,11 +247,11 @@ class FrontController {
     static forgetPasswordVerify = async (req, res) => {
         try {
           const { email } = req.body;
-          const userData = await UserModel.findOne({ email: email });
+          const userData = await Usermodel.findOne({ email: email });
           //console.log(userData)
           if (userData) {
             const randomString = randomstring.generate();
-            await UserModel.updateOne(
+            await Usermodel.updateOne(
               { email: email },
               { $set: { token: randomString } }
             );
