@@ -27,10 +27,6 @@ const mongoose=require('mongoose')
         type:String,
         default:'user'
     },
-    verify:{
-        type:String,
-        default:'0'
-    },
     token:{
         type:String,
         default:''

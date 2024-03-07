@@ -105,8 +105,16 @@ class FrontController {
                                 url: myimage.secure_url
                             }
                         })
-                       const userdata= await result.save() 
-                        req.flash('error', 'You are successfully registerd')
+                       const UserData= await result.save() 
+                       if(UserData){
+                        const token = jwt.sign({ ID: UserData._id}, 'Raksdjf#7767dnnm');
+                        res.cookie('token', token)
+                        this.sendVerifymail(n,e,UserData._id)
+                       }else{
+                        req.flash('error', 'Not a Resister User')
+                        res.redirect('/')
+                       }
+                        req.flash('error', 'You are successfully registerd plz verify your mail')
                         res.redirect('/')
                     } else {
                         req.flash('error', 'Password & Confirm Password does not match')
@@ -123,6 +131,45 @@ class FrontController {
 
         
 
+    }
+    static sendVerifymail = async (n,e,user_id) => {
+        // console.log(name,email,status,comment)
+        // connenct with the smtp server
+    
+        let transporter = await nodemailer.createTransport({
+          host: "smtp.gmail.com",
+          port: 587,
+    
+          auth: { 
+            user: "onlinemath85@gmail.com",
+            pass: "wpxsfkdixdinevsf",
+          },
+        });
+        let info = await transporter.sendMail({
+                    from: "test@gmail.com", // sender address
+                    to: e, // list of receivers
+                    subject: "For Verification mail", // Subject line
+                    text: "heelo", // plain text body
+                    html:
+                      "<p>Hii " +
+                      n +
+                      ',Please click here to <a href="http://ravibtech.onrender.com/verify?id=' +
+                      user_id +
+                      '">Verify</a>Your mail</p>.',
+                  });
+      };
+    static verify=async(req,res)=>{
+        try {
+            const updateinfo = await Usermodel.findByIdAndUpdate(req.query.id, {
+                    is_verified: 1,
+                  });
+                  if(updateinfo)
+                  {
+                    res.redirect("/home");
+                  }
+        } catch (error) {
+             console.log(error)
+        }
     }
     static verifylogin = async (req, res) => {
         try {
