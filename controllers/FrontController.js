@@ -255,7 +255,7 @@ class FrontController {
             }else{
                 const random=randomstring.generate();
                const  updatedata = await Usermodel.updateOne({email:email},{$set:{token:random}});
-             this.resetpasswordmail(userdata.name,userdata.email,random)
+             this.resetpasswordmail(email,random)
              req.flash('error', 'reset password link send to Email Address')
              res.redirect('/forget')
             }
@@ -270,7 +270,7 @@ class FrontController {
     }
      
      //for reset pass send mail
-     static resetpasswordmail= async(name,email,token)=>{
+     static resetpasswordmail= async(email,random)=>{
         try {
          let transporter =await nodemailer.createTransport({
              host: "smtp.gmail.com",
@@ -285,7 +285,7 @@ class FrontController {
              to: email,  // list of receivers
              subject: "For Reset Your Password", // Subject line
              text: "Hello world?", // plain text body
-             html: '<b>'+name+'</b> ,please click here to <a href="https://ravibtech.onrender.com/forget-password?token='+token+'">Reset</a> your password' // html body
+             html: '</b> ,please click here to <a href="https://ravibtech.onrender.com/forget-password?token='+random+'">Reset</a> your password' // html body
            });
         } catch (error) {
          console.log(error)
