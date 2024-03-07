@@ -46,8 +46,7 @@ class FrontController {
     }
     static login = async (req, res) => {
         try {
-            res.render('login', { message: req.flash('error'),
-        msg:req.flash('success')})
+            res.render('login', { message: req.flash('error'),msg: req.flash('success')})
         } catch (error) {
             console.log(error)
         }
@@ -114,7 +113,7 @@ class FrontController {
                         req.flash('error', 'Not a Resister User')
                         res.redirect('/')
                        }
-                        req.flash('error', 'You are successfully registerd plz verify your mail')
+                        req.flash('success', 'You are successfully registerd plz verify your mail')
                         res.redirect('/')
                     } else {
                         req.flash('error', 'Password & Confirm Password does not match')
@@ -180,19 +179,19 @@ class FrontController {
                 if (user != null) {
                     const ismatch = await bcrypt.compare(password, user.password)
                     if (ismatch) {
-                        if (user.role == 'admin') {
+                        if (user.role == 'admin' && user.is_verified == 1) {
                             const token = jwt.sign({ ID: user._id }, 'Raksdjf#7767dnnm');
                             //console.log(token)
                             res.cookie('token', token)
                             res.redirect('/admin/home')
                         }
-                        if (user.role == 'user') {
+                        if (user.role == 'user' && user.is_verified == 1) {
                             const token = jwt.sign({ ID: user._id }, 'Raksdjf#7767dnnm');
                             //console.log(token)
                             res.cookie('token', token)
                             res.redirect('/home')
                         }else{
-                            req.flash('error', 'Go To Mail Section And Verify Mail After You will Excess Your Account')
+                            req.flash('error', 'Plz Verify Mail After You will Excess Your Account')
                         res.redirect('/')
                         }
                     } else {
@@ -296,7 +295,7 @@ class FrontController {
           const { email } = req.body;
           const userData = await Usermodel.findOne({ email: email });
           //console.log(userData)
-          if (userData) {
+          if (userData && userData.is_verified == 1) {
             const randomString = randomstring.generate();
             await Usermodel.updateOne(
               { email: email },
@@ -306,7 +305,7 @@ class FrontController {
             req.flash("success", "Plz Check Your mail to reset Your Password!");
             res.redirect("/");
           } else {
-            req.flash("error", "You are not a registered Email");
+            req.flash("error", "Your Email is not Verified");
             res.redirect("/");
           }
         } catch (error) {
@@ -349,7 +348,7 @@ class FrontController {
     //        if(tokendata){
     //         res.render('forgetpassword', {user_id:tokendata._id})
     //        }else{
-    //         res.render('404',{message:"token is invalid"})
+    //        
     //        }
             
     //     } catch (error) {
@@ -364,7 +363,7 @@ class FrontController {
           if (tokenData) {
             res.render("reset-password", { user_id: tokenData._id });
           } else {
-            res.render("404");
+            res.render('404',{message:"token is invalid"})
           }
         } catch (error) {
           console.log(error);
