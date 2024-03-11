@@ -3,9 +3,10 @@ const FrontController = require('../controllers/FrontController')
 const chekUserAuth=require('../middleware/auth')
 const CourseController = require('../controllers/CourseController')
 const AdminController = require('../controllers/AdminController')
+const isLogin=require('../middleware/isLogin')
 const route=express.Router()
  
- route.get('/',FrontController.login)
+ route.get('/',isLogin,FrontController.login)
 
  route.get('/home',chekUserAuth,FrontController.home)
  route.get('/about',chekUserAuth,FrontController.about)
