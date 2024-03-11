@@ -7,7 +7,7 @@ const isLogin=require('../middleware/isLogin')
 const adminRole=require('../middleware/adminRole')
 const route=express.Router()
  
- route.get('/',isLogin,FrontController.login)
+ route.get('/',FrontController.login)
 
  route.get('/home',chekUserAuth,FrontController.home)
  route.get('/about',chekUserAuth,FrontController.about)
