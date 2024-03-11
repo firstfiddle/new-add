@@ -4,6 +4,7 @@ const chekUserAuth=require('../middleware/auth')
 const CourseController = require('../controllers/CourseController')
 const AdminController = require('../controllers/AdminController')
 const isLogin=require('../middleware/isLogin')
+const adminRole=require('../middleware/adminRole')
 const route=express.Router()
  
  route.get('/',isLogin,FrontController.login)
@@ -33,7 +34,7 @@ const route=express.Router()
  route.post('/courseupdate/:id',chekUserAuth,CourseController.courseupdate)
  
  //Admin Controller
- route.get('/admin/home',chekUserAuth,AdminController.getuserdisplay)
+ route.get('/admin/home',chekUserAuth,adminRole('admin'),AdminController.getuserdisplay)
  route.post('/update_status/:id',chekUserAuth,AdminController.updatestatus)
  route.get('/admin/courseview/:id',chekUserAuth,AdminController.courseview)
  route.get('/admin/courseedit/:id',chekUserAuth,AdminController.courseedit)
